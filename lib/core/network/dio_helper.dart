@@ -65,7 +65,7 @@ class DioHelper implements BaseNetwork {
       String? token = storageService.getValue(key: StorageKeys.token);
 
       dio.options.headers = {
-        if (token != null) "Authorization": token,
+        if (token != null) "Authorization": "Bearer $token",
       };
       final response = await dio.post(endPoint, data: data);
 

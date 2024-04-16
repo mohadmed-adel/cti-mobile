@@ -1,12 +1,12 @@
 import 'package:cti/core/constants/app_images.dart';
 import 'package:cti/core/constants/colors.dart';
+import 'package:cti/features/activeRequests/view/request-new-services/request_new_service_screen.dart';
 import 'package:cti/features/services/services-list/models/cate_model.dart';
-import 'package:cti/features/services/services-list/view/request_new_service_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/shared-widgets/app_bar.dart';
 import '../../../../core/shared-widgets/app_loader.dart';
-import '../models/services_model.dart';
+import '../../../activeRequests/models/services_model.dart';
 import '../services/services_list_services.dart';
 
 class CatServicesListScreen extends StatelessWidget {

@@ -6,8 +6,12 @@ import '../constants/app_images.dart';
 
 class DefualtAppBar extends StatelessWidget implements PreferredSizeWidget {
   const DefualtAppBar(
-      {super.key, required this.title, this.showMenuBtn = true});
+      {super.key,
+      required this.title,
+      this.showMenuBtn = true,
+      this.customAction});
   final String title;
+  final Widget? customAction;
   final bool showMenuBtn;
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class DefualtAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               const Spacer(),
-              if (showMenuBtn)
+              if (customAction == null && showMenuBtn)
                 IconButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
@@ -47,6 +51,7 @@ class DefualtAppBar extends StatelessWidget implements PreferredSizeWidget {
                       Icons.menu,
                       color: Colors.white,
                     )),
+              if (customAction != null) customAction!,
             ],
           ),
           const Spacer(),
@@ -56,6 +61,5 @@ class DefualtAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(80);
 }

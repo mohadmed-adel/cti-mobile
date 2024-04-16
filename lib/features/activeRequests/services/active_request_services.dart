@@ -18,4 +18,17 @@ class ActiveRequestServices {
       return [];
     }
   }
+
+  static Future<RequestedServiceModel?> requestNewService(
+      RequestedServiceModel requestedService) async {
+    try {
+      final response = await dioHelper?.post(ApiStrings.requestedServices,
+          data: requestedService.toJson());
+      return RequestedServiceModel.fromJson(response);
+    } on ServerException catch (e) {
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
 }

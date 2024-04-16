@@ -1,6 +1,6 @@
 import 'package:cti/core/network/api_strings.dart';
+import 'package:cti/features/activeRequests/models/services_model.dart';
 import 'package:cti/features/services/services-list/models/cate_model.dart';
-import 'package:cti/features/services/services-list/models/services_model.dart';
 
 import '../../../../main.dart';
 

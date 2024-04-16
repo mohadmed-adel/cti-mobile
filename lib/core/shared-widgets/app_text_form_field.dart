@@ -75,10 +75,14 @@ class AppTextFormField extends StatelessWidget {
                   const EdgeInsets.symmetric(vertical: 12.0, horizontal: 15),
               isDense: true,
               counterText: '',
+              focusedErrorBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.primary)),
               focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: AppColors.primary)),
               enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: AppColors.primary)),
+              errorBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red)),
               hintStyle: const TextStyle(),
               errorStyle: const TextStyle(height: 1.5),
               border: InputBorder.none,

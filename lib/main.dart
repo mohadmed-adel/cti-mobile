@@ -33,9 +33,22 @@ class MyApp extends StatelessWidget {
       ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
-        appBarTheme: const AppBarTheme(backgroundColor: AppColors.primary),
+        appBarTheme: const AppBarTheme(
+            backgroundColor: AppColors.primary,
+            actionsIconTheme: IconThemeData(color: Colors.white)),
         useMaterial3: true,
         scaffoldBackgroundColor: AppColors.offWhite,
+        tabBarTheme: const TabBarTheme(
+          labelStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w700,
+          ),
+          unselectedLabelStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w700,
+          ),
+          indicatorColor: Colors.black,
+        ),
       ),
       builder: (context, child) {
         return Directionality(

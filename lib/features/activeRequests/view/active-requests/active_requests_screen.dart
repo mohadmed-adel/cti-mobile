@@ -1,9 +1,10 @@
 import 'package:cti/core/shared-widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/shared-widgets/app_loader.dart';
-import '../models/requested_services_model.dart';
-import '../services/active_request_services.dart';
+import '../../../../core/shared-widgets/app_loader.dart';
+import '../../models/requested_services_model.dart';
+import '../../services/active_request_services.dart';
+import 'widgets/requested_services_card.dart';
 
 class ActiveRequestsScreen extends StatelessWidget {
   const ActiveRequestsScreen({super.key});
@@ -36,39 +37,6 @@ class ActiveRequestsScreen extends StatelessWidget {
                 });
           }
         },
-      ),
-    );
-  }
-}
-
-class RequestedServicesCard extends StatelessWidget {
-  const RequestedServicesCard({super.key, required this.requestedService});
-  final RequestedServiceModel requestedService;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade300,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(
-                    requestedService.services!.image,
-                  ),
-                )),
-          ),
-          Text(requestedService.services!.name),
-          const Spacer(),
-          Text(requestedService.description ?? ""),
-        ],
       ),
     );
   }

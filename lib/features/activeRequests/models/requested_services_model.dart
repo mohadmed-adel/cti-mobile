@@ -1,4 +1,4 @@
-import '../../services/services-list/models/services_model.dart';
+import 'services_model.dart';
 
 class RequestedServiceModel {
   final int? id;
@@ -11,6 +11,8 @@ class RequestedServiceModel {
   final String? error;
   final int? userId;
   final ServicesModel? services;
+  final String? createdAt;
+  final String? status;
   RequestedServiceModel(
       {this.id,
       this.description,
@@ -21,6 +23,8 @@ class RequestedServiceModel {
       this.serviceId,
       this.userId,
       this.services,
+      this.createdAt,
+      this.status,
       this.error});
 
   factory RequestedServiceModel.fromJson(Map<String, dynamic> json) {
@@ -30,16 +34,19 @@ class RequestedServiceModel {
         location: json['location'],
         buildingName: json['building_name'],
         buildingNumber: json['building_number'],
+        createdAt: json['created_at'],
+        assetNumber: json['asset_number'],
+        status: json['status'],
         services: ServicesModel.fromJson(json['service']));
   }
-  Map<String, dynamic> toJson(RequestedServiceModel requestedServiceModel) {
+  Map<String, dynamic> toJson() {
     return {
-      "description": requestedServiceModel.description,
-      "location": requestedServiceModel.location,
-      "building_name": requestedServiceModel.buildingName,
-      "building_number": requestedServiceModel.buildingNumber,
-      "asset_number": requestedServiceModel.assetNumber,
-      "service_id": requestedServiceModel.serviceId,
+      "description": description,
+      "location": location,
+      "building_name": buildingName,
+      "building_number": buildingNumber,
+      "asset_number": assetNumber,
+      "service_id": serviceId,
     };
   }
 }
