@@ -33,7 +33,7 @@ class ActiveRequestDetailsScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             RequestDetailsTap(requestedService: requestedService),
-            const LeaveCommentTap(),
+            LeaveCommentTap(requestedServicesId: requestedService.id!),
             const Icon(Icons.directions_car, size: 350),
           ],
         ),

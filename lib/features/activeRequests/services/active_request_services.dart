@@ -2,6 +2,7 @@ import 'package:cti/main.dart';
 
 import '../../../core/base-models/server_error_model.dart';
 import '../../../core/network/api_strings.dart';
+import '../models/comment_model.dart';
 import '../models/requested_services_model.dart';
 
 class ActiveRequestServices {
@@ -25,6 +26,34 @@ class ActiveRequestServices {
       final response = await dioHelper?.post(ApiStrings.requestedServices,
           data: requestedService.toJson());
       return RequestedServiceModel.fromJson(response);
+    } on ServerException catch (e) {
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<List<CommentModel>> getCommentList(
+      int requestedServicesId) async {
+    try {
+      final response =
+          await dioHelper?.get("${ApiStrings.comments}/$requestedServicesId");
+      return response
+          .map<CommentModel>((item) => CommentModel.fromJson(item))
+          .toList();
+    } on ServerException catch (e) {
+      return [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  static Future<CommentModel?> leaveComment(CommentModel commentModel) async {
+    try {
+      final response = await dioHelper?.post(
+          "${ApiStrings.comments}/${commentModel.requestedServices}",
+          data: commentModel.toJson());
+      return CommentModel.fromJson(response);
     } on ServerException catch (e) {
       return null;
     } catch (e) {

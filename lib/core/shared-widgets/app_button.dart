@@ -24,7 +24,7 @@ class AppButton extends StatelessWidget {
           : ElevatedButton(
               onPressed: onTap,
               style: ElevatedButton.styleFrom(
-                side: const BorderSide(color: Colors.white, width: 5),
+                side: const BorderSide(color: Colors.white, width: 3),
                 backgroundColor: AppColors.primary,
                 elevation: 3,
                 shape: RoundedRectangleBorder(

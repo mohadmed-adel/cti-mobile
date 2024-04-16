@@ -7,4 +7,5 @@ class ApiStrings {
   static const String login = "login";
   static const String user = "user";
   static const String requestedServices = "requested_services";
+  static const String comments = "comments";
 }
