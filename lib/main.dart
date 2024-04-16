@@ -1,6 +1,7 @@
 import 'package:cti/core/constants/colors.dart';
 import 'package:cti/core/local/storage_services.dart';
 import 'package:cti/core/network/dio_helper.dart';
+import 'package:cti/features/home/view/home_screen.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? token = storageService?.getValue(key: StorageKeys.token);
     return MaterialApp(
       title: 'CTI',
       debugShowCheckedModeBanner: false,
@@ -56,7 +58,7 @@ class MyApp extends StatelessWidget {
           child: child!,
         );
       },
-      home: const LoginScreen(),
+      home: token != null ? const HomeScreen() : const LoginScreen(),
     );
   }
 }

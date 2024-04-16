@@ -20,65 +20,88 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
-
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+  String? username, password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        children: [
-          const SizedBox(height: 20),
-          Image.asset(
-            AppImages.logo,
-            height: 200,
-          ),
-          const SizedBox(height: 20),
-          const Center(
-            child: Text(
-              "تسجيل الدخول",
-              style: TextStyle(
-                fontSize: 20,
-                color: AppColors.primary,
+      body: Form(
+        key: _key,
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          children: [
+            const SizedBox(height: 20),
+            Image.asset(
+              AppImages.logo,
+              height: 200,
+            ),
+            const SizedBox(height: 20),
+            const Center(
+              child: Text(
+                "تسجيل الدخول",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: AppColors.primary,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 10),
-          AppTextFormField(
-            onSaved: (value) {},
-            label: "اسم المستخدم",
-          ),
-          const SizedBox(height: 10),
-          AppTextFormField(
-            onSaved: (value) {},
-            label: "كلمة المرور",
-          ),
-        ],
+            const SizedBox(height: 10),
+            AppTextFormField(
+              onSaved: (value) {
+                username = value;
+              },
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return "برجاء إدخال إسم المستخدم";
+                }
+                return null;
+              },
+              label: "اسم المستخدم",
+            ),
+            const SizedBox(height: 10),
+            AppTextFormField(
+              onSaved: (value) {
+                password = value;
+              },
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return "برجاء إدخال كلمه المرور";
+                }
+                return null;
+              },
+              label: "كلمة المرور",
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: AppButton(
           isLoading: _isLoading,
           onTap: () async {
-            try {
-              setState(() {
-                _isLoading = true;
-              });
-              LoginResponseModel loginResponse = await LoginServeice.login(
-                  username: "mohamed_adel", password: "Error1033@");
+            if (_key.currentState!.validate()) {
+              _key.currentState!.save();
+              try {
+                setState(() {
+                  _isLoading = true;
+                });
+                LoginResponseModel loginResponse = await LoginServeice.login(
+                    username: username!, password: password!);
 
-              if (loginResponse.code == 200) {
-                storageService?.setValue(
-                    key: StorageKeys.token, value: loginResponse.accessToken);
+                if (loginResponse.code == 200) {
+                  storageService?.setValue(
+                      key: StorageKeys.token, value: loginResponse.accessToken);
 
-                Navigator.of(context)
-                    .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                  return const HomeScreen();
-                }));
-              } else {
-                AppToast.showErrorToast(context, loginResponse.error ?? "");
+                  Navigator.of(context)
+                      .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                    return const HomeScreen();
+                  }));
+                } else {
+                  AppToast.showErrorToast(context, loginResponse.error ?? "");
+                }
+              } finally {
+                setState(() {
+                  _isLoading = false;
+                });
               }
-            } finally {
-              setState(() {
-                _isLoading = false;
-              });
             }
           },
           title: "تسجيل الدخول"),
