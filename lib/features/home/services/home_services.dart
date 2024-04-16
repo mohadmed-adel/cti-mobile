@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:cti/features/home/services/models/user_model.dart';
+import 'package:cti/features/home/models/user_model.dart';
 
 import '../../../core/base-models/server_error_model.dart';
 import '../../../core/network/api_strings.dart';

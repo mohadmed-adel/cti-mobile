@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import '../constants/app_images.dart';
 
 class DefualtAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const DefualtAppBar({super.key, required this.title});
+  const DefualtAppBar(
+      {super.key, required this.title, this.showMenuBtn = true});
   final String title;
+  final bool showMenuBtn;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,15 +37,16 @@ class DefualtAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               const Spacer(),
-              IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx) => const OptionsScreen()));
-                  },
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                  )),
+              if (showMenuBtn)
+                IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (ctx) => const OptionsScreen()));
+                    },
+                    icon: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    )),
             ],
           ),
           const Spacer(),
