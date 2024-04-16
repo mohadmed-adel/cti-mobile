@@ -1,4 +1,3 @@
-import 'package:cti/core/constants/app_images.dart';
 import 'package:cti/core/constants/colors.dart';
 import 'package:cti/features/activeRequests/view/request-new-services/request_new_service_screen.dart';
 import 'package:cti/features/services/services-list/models/cate_model.dart';
@@ -70,9 +69,9 @@ class CatServicesListScreen extends StatelessWidget {
                                           width: 100,
                                           height: 100,
                                           decoration: BoxDecoration(
-                                            image: const DecorationImage(
-                                                image:
-                                                    AssetImage(AppImages.logo)),
+                                            image: DecorationImage(
+                                                image: NetworkImage(
+                                                    seervices[index].image)),
                                             shape: BoxShape.circle,
                                             border: Border.all(
                                                 color: AppColors.primary),
