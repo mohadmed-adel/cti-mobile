@@ -13,31 +13,36 @@ class RequestedServiceModel {
   final ServicesModel? services;
   final String? createdAt;
   final String? status;
-  RequestedServiceModel(
-      {this.id,
-      this.description,
-      this.location,
-      this.assetNumber,
-      this.buildingName,
-      this.buildingNumber,
-      this.serviceId,
-      this.userId,
-      this.services,
-      this.createdAt,
-      this.status,
-      this.error});
+  String? attachment;
+  RequestedServiceModel({
+    this.id,
+    this.description,
+    this.location,
+    this.assetNumber,
+    this.buildingName,
+    this.buildingNumber,
+    this.serviceId,
+    this.userId,
+    this.services,
+    this.createdAt,
+    this.status,
+    this.error,
+    this.attachment,
+  });
 
   factory RequestedServiceModel.fromJson(Map<String, dynamic> json) {
     return RequestedServiceModel(
-        id: json['id'],
-        description: json['description'],
-        location: json['location'],
-        buildingName: json['building_name'],
-        buildingNumber: json['building_number'],
-        createdAt: json['created_at'],
-        assetNumber: json['asset_number'],
-        status: json['status'],
-        services: ServicesModel.fromJson(json['service']));
+      id: json['id'],
+      description: json['description'],
+      location: json['location'],
+      buildingName: json['building_name'],
+      buildingNumber: json['building_number'],
+      createdAt: json['created_at'],
+      assetNumber: json['asset_number'],
+      status: json['status'],
+      attachment: json['attachment'],
+      services: ServicesModel.fromJson(json['service']),
+    );
   }
   Map<String, dynamic> toJson() {
     return {

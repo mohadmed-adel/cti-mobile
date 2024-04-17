@@ -71,6 +71,7 @@ class CatsListScreen extends StatelessWidget {
                                     ),
                                     Text(
                                       cats[index].name,
+                                      textAlign: TextAlign.center,
                                       style: const TextStyle(
                                         color: AppColors.primary,
                                         fontWeight: FontWeight.bold,

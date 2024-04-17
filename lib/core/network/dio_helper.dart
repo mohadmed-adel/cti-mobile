@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -73,5 +74,29 @@ class DioHelper implements BaseNetwork {
     } on DioException catch (e) {
       handleDioErrors(e);
     }
+  }
+
+  @override
+  Future uplaodImage(String endPoint, {required File imageFile}) async {
+    try {
+      StorageService storageService = await StorageService.init();
+      String? token = storageService.getValue(key: StorageKeys.token);
+
+      dio.options.headers = {
+        if (token != null) "Authorization": "Bearer $token",
+      };
+      FormData data = FormData();
+      data.files.add(MapEntry("attachment", convertToMultiPart(imageFile)));
+      final response = await dio.post(endPoint, data: data);
+
+      return response.data;
+    } on DioException catch (e) {
+      handleDioErrors(e);
+    }
+  }
+
+  MultipartFile convertToMultiPart(File file) {
+    return MultipartFile.fromFileSync(file.path,
+        filename: file.path.split("/").last);
   }
 }

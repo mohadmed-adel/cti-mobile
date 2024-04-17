@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/requested_services_model.dart';
+import 'widgets/add_attachment_tap.dart';
 import 'widgets/leave_comment_tap..dart';
 import 'widgets/request_detials_tap.dart';
 
@@ -34,7 +35,7 @@ class ActiveRequestDetailsScreen extends StatelessWidget {
           children: [
             RequestDetailsTap(requestedService: requestedService),
             LeaveCommentTap(requestedServicesId: requestedService.id!),
-            const Icon(Icons.directions_car, size: 350),
+            AddAttachmentTap(requestedService: requestedService),
           ],
         ),
       ),

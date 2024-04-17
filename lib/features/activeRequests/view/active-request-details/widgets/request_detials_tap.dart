@@ -1,5 +1,6 @@
 import 'package:cti/features/activeRequests/view/active-request-details/widgets/display_item.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../models/requested_services_model.dart';
 
@@ -27,7 +28,9 @@ class RequestDetailsTap extends StatelessWidget {
           ),
           DisplayItem(
             title: "تاريخ الطلب",
-            value: DateTime.parse(requestedService.createdAt!).toString(),
+            value: DateFormat("yyyy/MM/dd hh:mm a", "ar")
+                .format(DateTime.parse(requestedService.createdAt!))
+                .toString(),
           ),
           DisplayItem(
             title: "الوصف",

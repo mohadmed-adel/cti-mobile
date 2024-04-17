@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cti/main.dart';
 
 import '../../../core/base-models/server_error_model.dart';
@@ -54,6 +56,18 @@ class ActiveRequestServices {
           "${ApiStrings.comments}/${commentModel.requestedServices}",
           data: commentModel.toJson());
       return CommentModel.fromJson(response);
+    } on ServerException catch (e) {
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<String?> addAttachment(int id, File attachment) async {
+    try {
+      final response = await dioHelper?.uplaodImage("services/$id/attachment/",
+          imageFile: attachment);
+      return response['attachment'];
     } on ServerException catch (e) {
       return null;
     } catch (e) {

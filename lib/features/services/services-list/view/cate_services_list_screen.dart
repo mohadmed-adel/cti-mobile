@@ -79,6 +79,7 @@ class CatServicesListScreen extends StatelessWidget {
                                         ),
                                         Text(
                                           seervices[index].name,
+                                          textAlign: TextAlign.center,
                                           style: const TextStyle(
                                             color: AppColors.primary,
                                             fontWeight: FontWeight.bold,
