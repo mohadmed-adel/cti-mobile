@@ -35,11 +35,34 @@ class RequestedServicesCard extends StatelessWidget {
                   )),
             ),
             const SizedBox(width: 10),
-            Text(requestedService.services!.name),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "#${requestedService.id}",
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey.shade500,
+                  ),
+                ),
+                Text(
+                  requestedService.services!.name,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
             const Spacer(),
-            Text(requestedService.description ?? ""),
-            const Spacer(),
-            Text(requestedService.status ?? ""),
+            Text(
+              requestedService.status ?? "",
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ],
         ),
       ),

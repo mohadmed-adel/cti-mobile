@@ -71,6 +71,19 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               label: "كلمة المرور",
             ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "هل نسيت كلمة المرور؟",
+                  style: TextStyle(
+                    color: AppColors.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

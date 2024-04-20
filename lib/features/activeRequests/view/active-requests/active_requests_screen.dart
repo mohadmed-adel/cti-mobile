@@ -14,7 +14,6 @@ class ActiveRequestsScreen extends StatelessWidget {
     return Scaffold(
       appBar: const DefualtAppBar(
         title: "الطلبات النشطه",
-        showMenuBtn: false,
       ),
       body: FutureBuilder(
         future: ActiveRequestServices.getActiveRequestList(),
