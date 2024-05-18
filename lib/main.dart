@@ -14,6 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   storageService = await StorageService.init();
   dioHelper = DioHelper(dio: Dio());
+
   runApp(const MyApp());
 }
 

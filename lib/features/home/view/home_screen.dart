@@ -16,14 +16,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const DefualtAppBar(title: "الرئيسية"),
+      appBar: const DefualtAppBar(title: "الرئيسية", showArrowBack: false),
       body: FutureBuilder(
           future: HomeServices.getUserInfo(),
           builder: (BuildContext context, AsyncSnapshot<UserModel> snapshot) {
             if (snapshot.connectionState != ConnectionState.done) {
               return const AppLoader();
             } else if (snapshot.hasError || snapshot.data?.error != null) {
-              return Text("${snapshot.data?.error ?? snapshot.error}");
+              return const Center(child: Text("حدث خطأ يرجي المحاولة لاحقاً"));
             } else {
               return ListView(
                 padding:

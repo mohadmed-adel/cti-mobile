@@ -1,15 +1,17 @@
 import 'package:cti/core/constants/app_icons.dart';
-import 'package:cti/core/local/storage_services.dart';
 import 'package:cti/features/home/view/home_screen.dart';
-import 'package:cti/features/login/view/login_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_images.dart';
 import '../../../core/constants/colors.dart';
+import '../../../core/local/storage_services.dart';
 import '../../../core/shared-widgets/app_loader.dart';
 import '../../../main.dart';
+import '../../contact-us/view/contact_us_screen.dart';
 import '../../home/models/user_model.dart';
 import '../../home/services/home_services.dart';
+import '../../login/view/login_screen.dart';
 
 class OptionsScreen extends StatelessWidget {
   const OptionsScreen({super.key});
@@ -31,16 +33,50 @@ class OptionsScreen extends StatelessWidget {
           ),
           OptionsItem(
             title: "اتصل بنا",
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return const ContactUsScreen();
+              }));
+            },
             icon: AppIcons.callIcon,
           ),
           OptionsItem(
             title: "خروج",
             onTap: () {
-              storageService?.removeKey(StorageKeys.token);
+              showDialog(
+                context: context,
+                builder: (ctx) => CupertinoAlertDialog(
+                  title: const Text(
+                    "تسجيل الخروج",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                    ),
+                  ),
+                  content: const Text(
+                    "هل تريد تسجيل الخروج؟",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                    ),
+                  ),
+                  actions: [
+                    CupertinoDialogAction(
+                        onPressed: () => Navigator.of(context).pop(),
+                        isDefaultAction: true,
+                        child: const Text("إلغاء")),
+                    CupertinoDialogAction(
+                      child: const Text("تأكيد"),
+                      onPressed: () {
+                        storageService?.removeKey(StorageKeys.token);
 
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (ctx) => const LoginScreen()));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (ctx) => const LoginScreen()));
+                      },
+                    ),
+                  ],
+                ),
+              );
             },
             icon: AppIcons.exitIcon,
           ),
@@ -49,6 +85,9 @@ class OptionsScreen extends StatelessWidget {
     );
   }
 }
+/*
+
+           */
 
 class OptionsItem extends StatelessWidget {
   const OptionsItem({

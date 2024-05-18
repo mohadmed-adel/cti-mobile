@@ -66,8 +66,8 @@ class CatServicesListScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Container(
-                                          width: 100,
-                                          height: 100,
+                                          width: 80,
+                                          height: 80,
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 image: NetworkImage(

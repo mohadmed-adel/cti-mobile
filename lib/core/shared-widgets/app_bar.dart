@@ -9,10 +9,12 @@ class DefualtAppBar extends StatelessWidget implements PreferredSizeWidget {
       {super.key,
       required this.title,
       this.showMenuBtn = true,
+      this.showArrowBack = true,
       this.customAction});
   final String title;
   final Widget? customAction;
   final bool showMenuBtn;
+  final bool showArrowBack;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,6 +33,17 @@ class DefualtAppBar extends StatelessWidget implements PreferredSizeWidget {
           const Spacer(flex: 3),
           Row(
             children: [
+              Visibility(
+                visible: Navigator.of(context).canPop() && showArrowBack,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    )),
+              ),
               const Spacer(flex: 1),
               Text(
                 title,
