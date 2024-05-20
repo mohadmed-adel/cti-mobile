@@ -15,8 +15,6 @@ class ActiveRequestServices {
           .map<RequestedServiceModel>(
               (item) => RequestedServiceModel.fromJson(item))
           .toList();
-    } on ServerException catch (e) {
-      return [];
     } catch (e) {
       return [];
     }

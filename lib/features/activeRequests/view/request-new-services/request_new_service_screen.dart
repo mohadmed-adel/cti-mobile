@@ -134,8 +134,8 @@ class _RequestNewServiceScreenState extends State<RequestNewServiceScreen> {
                     backgroundColor: Colors.green,
                   ),
                 );
+                Navigator.of(context).pop();
               }
-              Navigator.of(context).pop();
             }
           } finally {
             setState(() {

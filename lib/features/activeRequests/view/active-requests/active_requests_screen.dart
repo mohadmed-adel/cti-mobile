@@ -12,9 +12,7 @@ class ActiveRequestsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const DefualtAppBar(
-        title: "الطلبات النشطه",
-      ),
+      appBar: const DefualtAppBar(title: "الطلبات النشطه"),
       body: FutureBuilder(
         future: ActiveRequestServices.getActiveRequestList(),
         builder: (BuildContext context,

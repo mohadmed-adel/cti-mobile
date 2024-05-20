@@ -16,35 +16,45 @@ class ContactUsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "البريد الالكتروني",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            SizedBox(height: 20),
-            Text(
               "كلية الأتصالات والمعلومات ",
               style: TextStyle(
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
+            ),
+            SizedBox(height: 15),
+            Text(
+              "الشؤون الفنية والمرافق والصيانة",
+              style: TextStyle(
                 fontSize: 18,
               ),
             ),
-            SizedBox(height: 5),
+            SizedBox(height: 10),
             Text(
               "رقم مكتب المساعدة :95671 ",
               style: TextStyle(
-                fontWeight: FontWeight.w700,
                 fontSize: 18,
               ),
             ),
             SizedBox(height: 5),
-            Text(
-              "الرياض: 443103797@tvtc.edu.sa",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 18,
-              ),
+            Row(
+              children: [
+                Text(
+                  "الرياض    ",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+                Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: Text(
+                    "443103797@tvtc.edu.sa",
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
