@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:cti/main.dart';
@@ -26,9 +27,8 @@ class ActiveRequestServices {
       final response = await dioHelper?.post(ApiStrings.requestedServices,
           data: requestedService.toJson());
       return RequestedServiceModel.fromJson(response);
-    } on ServerException catch (e) {
-      return null;
     } catch (e) {
+      log("cat $e");
       return null;
     }
   }

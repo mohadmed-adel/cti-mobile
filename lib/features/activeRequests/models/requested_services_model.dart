@@ -39,7 +39,7 @@ class RequestedServiceModel {
       buildingNumber: json['building_number'],
       createdAt: json['created_at'],
       assetNumber: json['asset_number'],
-      status: json['status']['name'],
+      status: json['status'] == null ? null : json['status']['name'],
       attachment: json['attachment'],
       services: ServicesModel.fromJson(json['service']),
     );
